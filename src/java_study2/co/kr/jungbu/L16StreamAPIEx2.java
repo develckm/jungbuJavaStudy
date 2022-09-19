@@ -152,6 +152,7 @@ public class L16StreamAPIEx2 {
 		
 		System.out.println(groupingList);
 		System.out.println(groupingList.get(Cate.가구));
+		//////////////////////stream partitioningBy true or false 의 2 그룹으로 나누는 것
 	}
 }
 
