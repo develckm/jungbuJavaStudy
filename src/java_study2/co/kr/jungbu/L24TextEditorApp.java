@@ -1,5 +1,9 @@
 package java_study2.co.kr.jungbu;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -31,7 +35,21 @@ class TextEditor extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		miOpen.addActionListener((e)->{
 			JFileChooser fileChooser=new JFileChooser();
-			fileChooser.showOpenDialog(this);
+			int option=fileChooser.showOpenDialog(this);
+			if(option==JFileChooser.APPROVE_OPTION) { //파일이 선택되면 
+				 File file=fileChooser.getSelectedFile();
+				 try {
+					Scanner scanner=new Scanner(file);
+					while(scanner.hasNext()) {
+						String line=scanner.nextLine();  
+						System.out.println(line);
+						ta.append(line+"\n");
+					}
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				 
+			}
 		});
 	}
 }
